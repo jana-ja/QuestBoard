@@ -1,0 +1,26 @@
+# OS / Editor
+.DS_Store
+.idea/
+.vscode/
+
+# Archive
+*.zip
+
+# Umgebungsdateien (Secrets) – nur die Vorlage ohne Werte wird eingecheckt
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+dist/
+
+# Claude Code (persönliche Einstellungen)
+.claude/settings.local.json
