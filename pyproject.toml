@@ -28,3 +28,11 @@ dev = [
     "pytest>=9.1.1",
     "ruff>=0.16.10",
 ]
+
+[tool.pyright]
+include = ["backend/src"]
+exclude = ["**/__pycache__"]
+venv = ".venv"
+venvPath = "."
+typeCheckingMode = "strict"
+
