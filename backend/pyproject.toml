@@ -28,8 +28,7 @@ dev = [
 ]
 
 [tool.pyright]
-include = ["backend/src"]
-exclude = ["**/__pycache__"]
+include = ["src", "tests"]
 venv = ".venv"
 venvPath = "."
 typeCheckingMode = "strict"
