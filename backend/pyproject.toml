@@ -34,5 +34,4 @@ venvPath = "."
 typeCheckingMode = "strict"
 
 [tool.ruff]
-
-extend-select = ["E", "F", "I", "UP", "B", "ASYNC", "PT"]
+lint.extend-select = ["E", "F", "I", "UP", "B", "ASYNC", "PT"]
