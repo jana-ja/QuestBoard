@@ -5,7 +5,7 @@ Neben Pflichten schlägt sie gezielt Quests für Erholung, Hobbys und neue Erfah
 misst die Balance zwischen Work und Fun.
 
 Quest Board ist zugleich ein Lernprojekt für Backend-Entwicklung mit Python sowie DevOps,
-Deployment und Cloud.
+Deployment und Cloud und KI-gestützte Entwicklung.
 
 ## Aufbau des Repositorys
 
