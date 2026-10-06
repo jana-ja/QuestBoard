@@ -20,7 +20,12 @@ Legt `.venv/` an und installiert alle Abhängigkeiten exakt so, wie sie in `uv.l
 
 ## Starten
 
-<!-- TODO: Startbefehl für Uvicorn und die lokale URL ergänzen -->
+```bash
+uv run uvicorn --factory quest_board.main:create_app
+```
+
+Startet einen Server lokal auf `http://127.0.0.1:8000` auf dem die API läuft.
+Interaktive API Dokumentation läuft unter http://127.0.0.1:8000/docs. 
 
 ## Prüfen
 
