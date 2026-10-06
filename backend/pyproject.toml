@@ -19,6 +19,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "httpx2>=2.13.1",
     "pyright>=1.1.414",
     "pytest>=9.1.1",
     "ruff>=0.16.10",
@@ -32,3 +33,7 @@ typeCheckingMode = "strict"
 
 [tool.ruff]
 lint.extend-select = ["E", "F", "I", "UP", "B", "ASYNC", "PT"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["--import-mode=importlib", "--strict-markers"]
