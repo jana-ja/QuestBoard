@@ -47,7 +47,7 @@ docs/       PRD, Konzept, Lernleitfaden, Arbeitsweise, ADRs
 <!-- In Sprint 0 ergänzen, sobald die Projekte angelegt sind. -->
 - Backend: `cd backend && uv run pytest` · `uv run ruff check --fix` · `uv run ruff format` · `uv run pyright`
 - Frontend: (Sprint 0)
-- Lokal starten: (Sprint 0)
+- Lokal starten: `cd backend && uv run uvicorn --factory quest_board.main:create_app`
 - API-Typen neu erzeugen: (Sprint 0)
 
 ## Architekturregeln (nicht verhandelbar ohne ADR)

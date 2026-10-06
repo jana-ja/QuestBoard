@@ -1,0 +1,39 @@
+[project]
+name = "quest-board"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "jana-ja", email = "jana.nein+account@posteo.de" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.142.2",
+    "pydantic>=2.13.5",
+    "uvicorn>=0.54.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.7,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx2>=2.13.1",
+    "pyright>=1.1.414",
+    "pytest>=9.1.1",
+    "ruff>=0.16.10",
+]
+
+[tool.pyright]
+include = ["src", "tests"]
+venv = ".venv"
+venvPath = "."
+typeCheckingMode = "strict"
+
+[tool.ruff]
+lint.extend-select = ["E", "F", "I", "UP", "B", "ASYNC", "PT"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["--import-mode=importlib", "--strict-markers"]
