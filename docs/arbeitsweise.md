@@ -22,7 +22,9 @@ Dieses Projekt simuliert den Alltag in einem kleinen Entwicklungsteam. Claude Co
 ## 2. Sprints
 
 - **Länge:** 2 Wochen.
-- **Kapazität:** rund 12–20 Stunden Junior-Zeit pro Sprint. Lieber zu wenig als zu viel einplanen.
+- **Kapazität:** wird in jedem Sprint Planning neu erfragt: Wie viele Abende sind realistisch verfügbar?
+  Abgeglichen mit der Velocity der letzten Sprints. Höchstens so viele Junior-Punkte wie Abende;
+  alles darüber nur als markierter Stretch. Lieber zu wenig als zu viel einplanen.
 - **Schätzung:** Punkte 1, 2, 3, 5 (1 Punkt ≈ ein Abend). Größere Tickets werden geteilt.
 - **Sprintziel:** Ein Satz, der zum aktuellen Meilenstein passt. Er ist wichtiger als jedes einzelne Ticket.
 - **Sprint 0** entspricht Meilenstein M0 (Fundament), danach folgen die Meilensteine aus dem PRD. Ein Meilenstein kann mehrere Sprints umfassen.
