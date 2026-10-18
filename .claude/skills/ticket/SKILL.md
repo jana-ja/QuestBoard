@@ -39,6 +39,8 @@ Was soll der Junior danach verstanden haben?
 
 ## Einstieg
 Zwei bis drei Hinweise, wo man anfängt – keine Lösung.
+Jeder Hinweis, der ein konkretes Verhalten eines Tools behauptet, wird vorher selbst
+überprüft (Doku lesen oder ausprobieren).
 
 Größe: 1 | 2 | 3 | 5 · Bereich: backend | frontend | infra | docs · Besitzer: junior | senior
 ```

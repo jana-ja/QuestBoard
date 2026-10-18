@@ -30,7 +30,9 @@ Letzte Commits auf main:
 3. **Tickets vorschlagen:** Aus dem Backlog und dem Meilenstein die nötigen Tickets ableiten.
    Fehlen Tickets, schreibe sie nach der Vorlage aus `/ticket`. Jedes Ticket bekommt
    Größe (1, 2, 3, 5 Punkte; 1 Punkt ≈ ein Abend), Bereich und Besitzer (junior/senior).
-   Kapazität: rund 12–20 Stunden Junior-Zeit pro Sprint (2 Wochen); plane eher knapp.
+   Kapazität: Frag zuerst den Junior, wie viele Abende im Sprint realistisch verfügbar sind,
+   und vergleiche mit der Velocity der letzten Sprints. Plane höchstens so viele Junior-Punkte,
+   wie Abende verfügbar sind; zusätzliche Tickets nur als markierter Stretch.
 4. **Mit dem Product Owner abstimmen:** Sprintziel und Ticketliste als Tabelle zeigen.
    Produktfragen mit **[PO]** markieren. Erst nach Zustimmung anlegen.
 5. **Anlegen:** Issues mit `gh issue create` (Labels, Meilenstein `Sprint N`), falls es den
