@@ -1,0 +1,65 @@
+name: backend
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: ./backend
+
+jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: read # Required for dorny/paths-filter to work with pull request events
+      contents: read
+
+    outputs:
+      backend: ${{ steps.filter.outputs.backend }}
+
+    steps:
+      # Checkout of repo needed for dorny/paths-filter to work with push events
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
+        id: filter
+        with:
+          filters: |
+            backend:
+              - 'backend/**'
+              - '.github/workflows/backend.yml'
+
+  check-backend:
+    needs: check-changes
+    if: ${{ needs.check-changes.outputs.backend == 'true' }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install uv
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.12.7"
+          working-directory: "./backend"
+      - name: Set up Python
+        run: uv python install
+      - name: Install the project
+        run: uv sync --locked # locked -> aborts if uv.lock does not match pyproject.toml
+
+      - name: Lint code with Ruff
+        run: uv run ruff check --output-format=github
+      - name: Check code format with Ruff
+        run: uv run ruff format --check
+      - name: Type check code with Pyright
+        run: uv run pyright
+      - name: Run tests
+        run: uv run pytest
