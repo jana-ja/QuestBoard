@@ -106,7 +106,7 @@ Ein Ticket ist fertig, wenn:
 
 - `main` ist geschützt (Branch Protection auf GitHub):
   - Änderungen nur per Pull Request,
-  - Status-Checks müssen grün sein (sobald die CI existiert),
+  - Status-Checks müssen grün sein (check-changes und check-backend), Regel gilt auch für Admins und darf nicht übergangen werden.
   - **keine** erforderlichen Approvals – GitHub erlaubt nicht, den eigenen PR freizugeben; das Fazit des Reviews steht als Kommentar im PR,
   - Force-Push und Löschen von `main` verboten.
 - Merge-Strategie: Squash Merge, damit `main` eine lesbare Historie mit einem Commit pro Ticket hat.
