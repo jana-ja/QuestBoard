@@ -45,9 +45,14 @@ docs/       PRD, Konzept, Lernleitfaden, Arbeitsweise, ADRs
 ## Befehle
 
 <!-- In Sprint 0 ergänzen, sobald die Projekte angelegt sind. -->
-- Backend: `cd backend && uv run pytest` · `uv run ruff check --fix` · `uv run ruff format` · `uv run pyright`
+- Backend checken: `cd backend && uv run pytest` · `uv run ruff check --fix` · `uv run ruff format` · `uv run pyright`
 - Frontend: (Sprint 0)
-- Lokal starten: `cd backend && uv run uvicorn --factory quest_board.main:create_app`
+- Lokal entwickeln:
+  - einmalig einrichten: `infra/.env.example` nach `infra/.env` kopieren und Werte eintragen.
+  - container starten (db): `cd infra && docker compose up -d`
+  - api starten: `cd backend && uv run uvicorn --factory quest_board.main:create_app`
+  - container stoppen (db): `cd infra && docker compose down`
+  - container stoppen und db Daten löschen: `cd infra && docker compose down -v`
 - API-Typen neu erzeugen: (Sprint 0)
 
 ## Architekturregeln (nicht verhandelbar ohne ADR)
