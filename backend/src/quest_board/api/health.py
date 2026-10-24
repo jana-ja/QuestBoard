@@ -6,5 +6,5 @@ router = APIRouter(prefix="/health", tags=["health"])
 
 
 @router.get("")  # response_model is redundant here because of return type annotation
-async def check_health() -> String:
+async def check_health() -> str:
     return HealthResponse(status="ok")
