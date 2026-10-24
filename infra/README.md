@@ -19,12 +19,12 @@ Einmalig die Vorlage kopieren und Werte eintragen:
 cp .env.example .env
 ```
 
-| Variable | Bedeutung |
-|---|---|
-| `POSTGRES_USER` | Benutzer der Datenbank |
-| `POSTGRES_PASSWORD` | Passwort dieses Benutzers |
-| `POSTGRES_DB` | Name der Datenbank, z. B. `quest_board` (Unterstrich statt Bindestrich) |
-| `POSTGRES_PORT` | Port auf dem Host; ohne Angabe `5432` |
+| Variable | Bedeutung | Default |
+|---|---|---|
+| `POSTGRES_USER` | Benutzer der Datenbank | `postgres` |
+| `POSTGRES_PASSWORD` | Passwort dieses Benutzers | - (Pflicht) |
+| `POSTGRES_DB` | Name der Datenbank (Unterstrich statt Bindestrich) | `quest_board` |
+| `POSTGRES_PORT` | Port auf dem Host | `5432` |
 
 `.env` enthält Zugangsdaten und wird nicht eingecheckt. Benutzer, Passwort und Datenbankname
 werden nur beim **ersten** Start mit leerem Volume ausgewertet – wer sie später ändert, muss
