@@ -13,7 +13,7 @@ Deployment und Cloud und KI-gestützte Entwicklung.
 |---|---|
 | [`backend/`](backend/README.md) | API mit FastAPI, später SQLAlchemy und PostgreSQL |
 | `frontend/` | React + TypeScript als PWA *(folgt)* |
-| `infra/` | Docker Compose, Caddy, Deploy- und Backup-Skripte *(folgt)* |
+| [`infra/`](infra/README.md) | Docker Compose (PostgreSQL), später Caddy, Deploy- und Backup-Skripte |
 | `.github/` | CI-Workflows, Issue- und PR-Vorlagen |
 | [`docs/`](docs/) | Anforderungen, Fachkonzept, Arbeitsweise, Architekturentscheidungen |
 
