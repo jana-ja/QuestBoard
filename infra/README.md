@@ -63,7 +63,7 @@ Netzwerk aus nicht erreichbar.
 
 ## Daten
 
-Die Daten liegen im benannten Volume `quest_baord_db_data` (Compose setzt den Projektnamen `quest_board`
+Die Daten liegen im benannten Volume `quest_board_db_data` (Compose setzt den Projektnamen `quest_board`
 davor, weil er durch `name: quest_board` gesetzt wurde). Anzeigen mit:
 
 ```bash
