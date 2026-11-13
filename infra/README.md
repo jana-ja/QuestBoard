@@ -63,12 +63,12 @@ Netzwerk aus nicht erreichbar.
 
 ## Daten
 
-Die Daten liegen im benannten Volume `infra_db_data` (Compose setzt den Projektnamen `infra`
-davor). Anzeigen mit:
+Die Daten liegen im benannten Volume `quest_baord_db_data` (Compose setzt den Projektnamen `quest_board`
+davor, weil er durch `name: quest_board` gesetzt wurde). Anzeigen mit:
 
 ```bash
-docker volume ls --filter name=infra
-docker volume inspect infra_db_data
+docker volume ls --filter name=quest_board
+docker volume inspect quest_board_db_data
 ```
 
 Unter macOS liegt das Volume in der Linux-VM von Docker Desktop, nicht im Dateisystem des Macs.
