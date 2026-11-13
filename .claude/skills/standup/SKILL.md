@@ -29,5 +29,7 @@ Höchstens fünf Sätze plus eine Frage:
 1. Fasse zusammen, wo wir stehen (laufendes Ticket, offener PR, uncommittete Arbeit).
 2. Weise auf Offenes hin, das zuerst erledigt werden sollte (z. B. Review-Kommentare
    beantworten, roter CI-Lauf, PR wartet auf Merge).
+   Prüfe auch die eigenen Senior-Tickets im Sprint: Ist eins offen und nicht blockiert,
+   sag, dass du es jetzt angehst, statt auf eine Freigabe zu warten.
 3. Schlage das Ziel für heute vor – realistisch für einen Abend.
 4. Frage nach Blockern oder ob der Junior etwas anderes vorhat.
