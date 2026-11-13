@@ -12,4 +12,5 @@ Wenn etwas mehr als eine halbe Stunde gekostet hat: Ursache und Lösung in zwei,
 | 24.10.26 | PostgreSQL | Bezeichner mit '-' müssen in Anführungszeichen gesetzt werden ("example-name"). | In Bezeichnern bevorzugt "_" statt "-" verwenden. |
 | 24.10.26. | Docker Compose $$ | Variable im Healthcheck wurde von Compose aufgelöst, nicht im Container | Compose ersetzt ${VAR} vor dem Start, auch innerhalb von Anführungszeichen. $$ escaped das $, dann löst die Shell im Container die Variable aus der Umgebung des Containers auf. |
 | 24.10.26. | Docker Compose Defaults | Default fehlte an einer zweiten Stelle | ${VAR:-default} gilt nur an dieser einen Stelle. Muss Compose die Variable mehrfach auflösen, den Default wiederholen oder YAML-Anker nehmen. Besser: Werte einzeln an den Dienst geben und dort zusammensetzen. |
-
+| 13.11.26 | Docker Datenpersistenz | - | Daten bleiben in Containern erhalten bei stop, aber nicht bei down. Daten in Volumens überleben auch down, aber nicht down -v |
+| 13.11.26 | Compose Projektname | Compose verwendet Ordnernamen als prefix für container und volume Namen. Zwei Projekte mit gleichen Ordnernamen können uneindeutige Namen erzeugen. | Projektnamen in Compose explizit setzen, dieser wird dann statt des Ordnernamens verwendet |
