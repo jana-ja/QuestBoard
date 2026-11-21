@@ -5,7 +5,7 @@ Single Page App mit React, TypeScript und Vite. Überblick über das Gesamtproje
 
 ## Voraussetzungen
 
-- Node.js in der Hauptversion aus `.nvmrc` (aktuell 24) mit npm
+- Node.js in der Hauptversion aus `.nvmrc` (aktuell 26) mit npm
 
 Alle Befehle werden im Ordner `frontend/` ausgeführt.
 
