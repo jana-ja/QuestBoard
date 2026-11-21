@@ -131,11 +131,15 @@ Ein Ticket ist fertig, wenn:
 
 ## 8. Git Naming Conventions
 
-**Commits**
+### Commits
 
-`type(scope): describe the changes so others and future you understand what you did here`
+`type(scope): describe the changes so others and future you understand what you did here`  
+`type(scope)!: describe the breaking changes so others and future you understand what you did here`
 
-Typen:
+Format:  
+Imperativ, Englisch, klein, kein Punkt am Ende
+
+#### Typen
 | Type | Beispiel |
 |---|---|
 | feat | `feat(backend): add health endpoint`|
@@ -149,48 +153,55 @@ Typen:
 | style | `style(backend): apply ruff format` |
 | perf | `perf(backend): index quest instances by day` |
 
-Möglichst spezifisch sein: Ist es ein Fehler (`fix`), nur Doku (`docs`), nur Tests (`test`), CI (`ci`) oder eine Abhängigkeit (`build`)? Erst wenn nichts davon passt, `chore`.
+Möglichst spezifisch wählen: Ist es ein Fehler (`fix`), nur Doku (`docs`), nur Tests (`test`), CI (`ci`) oder eine Abhängigkeit (`build`)? Erst wenn nichts davon passt, `chore`.
 
-Scopes:
-| Scope | Beispiel |
-|---|---|
-| backend | `feat(backend): add health endpoint`|
-| frontend | `fix(backend): handle missing timezone` |
-| infra | `refactor(backend): extract quest service` |
-| ci | `test(backend): cover day rollover` |
-| docs | `docs: add ADR for database driver` |
+Merkt jemand, der das System betreibt oder benutzt, den Fehler? Dann fix. Merkt es nur, wer am Code arbeitet? Dann chore.
+
+#### Scopes
+backend, frontend, infra
 
 Kein Scope, wenn die Änderung übergreifend ist oder bereits durch den Typ abgedeckt.
 
-**Branches**
+#### Breaking Changes
+Werden durch `type(scope)!: ...` markiert und zusätzlich mit einem Footer versehen:
+`BREAKING CHANGE: <was beachtet werden muss>`
 
-`prefix/XX-short-name`
+Der Footer steht am Ende der Commit Message nach einer Leerzeile, beim PR (siehe unten) im PR-Text.
 
-`prefix/short-name` **nur**, ohne zugehöriges Ticket.
+### Branches
 
-Präfixe:
-| Präfix | Beispiel |
-|---|---|
-| feat | `feat/19-board-endpoint` |
-| fix | `fix/compose-healthcheck` |
-| infra | `infra/20-caddy-reverse-proxy` |
-| docs | `docs/7-adr-api-versioning`|
-| chore | `chore/5-break-ci-and-volumes` |
+`prefix/XX-short-name`  
+`prefix/short-name` **nur** ohne zugehöriges Ticket
 
-Präfix Wahl: Fehler vor Bereich, Bereich vor Art (fix > infra > feat > docs > chore)
-Keine Klammern, keine Leerzeichen, kein Scope
+Format: Keine Klammern, keine Leerzeichen, kein Scope
 
-**PRs**
+#### Präfixe
+Das Präfix beschreibt den Bereich der Änderungen
+| Präfix | Beispiel | Typischer Commit-Typ |
+|---|---|---|
+| feat | `feat/19-board-endpoint` | feat |
+| fix | `fix/compose-healthcheck` | fix |
+| infra | `infra/20-caddy-reverse-proxy` | feat, build, ci |
+| docs | `docs/7-adr-api-versioning`| docs |
+| chore | `chore/5-break-ci-and-volumes` | chore, refactor, build, test |
+
+Präfix Wahl:   
+Fehler → `fix/`. Nur Doku → `docs/`. Sonst nach Bereich: `infra/` (infra/, .github/). Neue Funktion in Backend oder Frontend → `feat/`. Alles andere → `chore/`. Weitere Präfixe gibt es nicht.  
+
+### PRs
 
 `type(scope): describe the changes so others and future you understand what you did here`
 
-Naming Convention wie bei Commits.
+Format: wie bei Commits
+
+#### Inhalt des Titels
 Beim Squash-Merge wird der PR Titel zur einzigen Commit Message.
-Ticket Nummer nicht in den Titel hinzufügen, sondern per Closes (siehe unten), da GitHub sie dann beim mergen selber anhängt und das Ticket verknüpft.
+- Bei PRs mit nur einem Commit sind diese identisch.
+- Bei mehreren Commits beschreibt der PR Titel das Gesamtziel des PRs/Tickets. Der Typ ist der wichtigste Typ unter den Commits. feat und fix schlagen alles andere, docs, test, chore und build gelten nur, wenn sie allein stehen.
 
-Bei PRs mit nur einem Commit sind diese identisch.
+PR Nummer nicht in den Titel hinzufügen, wird beim mergen automatisch von GitHub angehängt.
+Ticket Nummer nicht in den Titel hinzufügen, sondern per Closes (siehe unten), wird dann durch GitHub verknüpft.
 
-Bei mehreren Commits beschreibt der PR Titel das Gesamtziel des PRs/Tickets. Der zentrale type vom Zweck des PR wird verwendet.
-
+#### Ticket
 Closes #nr, wenn der PR das Ticket fertigstellt und schließen soll.
 Refs #nr, wenn der PR zum Ticket beiträgt, es aber nicht fertigstellt.
