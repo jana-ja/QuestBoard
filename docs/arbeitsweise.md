@@ -60,7 +60,7 @@ Ein ausgefallener Abend ist kein Problem; der Sprint wird nicht verlängert, son
 
 1. Ticket in "In Arbeit" schieben, Branch anlegen: `feat/<nr>-kurzbeschreibung` (auch `fix/`, `chore/`, `docs/`, `infra/`).
 2. Implementieren, kleine Commits nach Conventional Commits auf Englisch:
-   `feat(backend): add quest model`, `test(backend): cover rollover catch-up`, `fix(infra): correct caddy route`.
+   `feat(backend): add quest model`, `test(backend): cover rollover catch-up`, `fix(infra): correct caddy route`. Weitere Hinweise zu Git Naming Conventions in Punkt 8.
 3. Lokal prüfen: Linting, Typen, Tests (Befehle in `CLAUDE.md`).
 4. Push, Pull Request mit der PR-Vorlage, `Closes #<nr>`.
 5. CI muss grün sein.
@@ -126,3 +126,82 @@ Ein Ticket ist fertig, wenn:
 | `docs/*` | Inhaltliche Grundlage | bei Bedarf gelesen |
 
 **Pflege:** Wenn Claude denselben Fehler zweimal macht oder etwas wiederholt erklärt werden muss, gehört es in `CLAUDE.md` oder eine Rule. Das wird in jeder Retro geprüft.
+
+---
+
+## 8. Git Naming Conventions
+
+### Commits
+
+`type(scope): describe the changes so others and future you understand what you did here`  
+`type(scope)!: describe the breaking changes so others and future you understand what you did here`
+
+Format:  
+Imperativ, Englisch, klein, kein Punkt am Ende
+
+#### Typen
+| Type | Beispiel |
+|---|---|
+| feat | `feat(backend): add health endpoint`|
+| fix | `fix(backend): handle missing timezone` |
+| refactor | `refactor(backend): extract quest service` |
+| test | `test(backend): cover day rollover` |
+| docs | `docs: add ADR for database driver` |
+| build | `build(backend): remove sqlalchemy and alembic` |
+| ci | `ci: run pyright in backend workflow` |
+| chore | `chore(backend): simplify ruff config` |
+| style | `style(backend): apply ruff format` |
+| perf | `perf(backend): index quest instances by day` |
+
+Möglichst spezifisch wählen: Ist es ein Fehler (`fix`), nur Doku (`docs`), nur Tests (`test`), CI (`ci`) oder eine Abhängigkeit (`build`)? Erst wenn nichts davon passt, `chore`.
+
+Merkt jemand, der das System betreibt oder benutzt, den Fehler? Dann fix. Merkt es nur, wer am Code arbeitet? Dann chore.
+
+#### Scopes
+backend, frontend, infra
+
+Kein Scope, wenn die Änderung übergreifend ist oder bereits durch den Typ abgedeckt.
+
+#### Breaking Changes
+Werden durch `type(scope)!: ...` markiert und zusätzlich mit einem Footer versehen:
+`BREAKING CHANGE: <was beachtet werden muss>`
+
+Der Footer steht am Ende der Commit Message nach einer Leerzeile, beim PR (siehe unten) im PR-Text.
+
+### Branches
+
+`prefix/XX-short-name`  
+`prefix/short-name` **nur** ohne zugehöriges Ticket
+
+Format: Keine Klammern, keine Leerzeichen, kein Scope
+
+#### Präfixe
+Das Präfix beschreibt den Bereich der Änderungen
+| Präfix | Beispiel | Typischer Commit-Typ |
+|---|---|---|
+| feat | `feat/19-board-endpoint` | feat |
+| fix | `fix/compose-healthcheck` | fix |
+| infra | `infra/20-caddy-reverse-proxy` | feat, build, ci |
+| docs | `docs/7-adr-api-versioning`| docs |
+| chore | `chore/5-break-ci-and-volumes` | chore, refactor, build, test |
+
+Präfix Wahl:   
+Fehler → `fix/`. Nur Doku → `docs/`. Sonst nach Bereich: `infra/` (infra/, .github/). Neue Funktion in Backend oder Frontend → `feat/`. Alles andere → `chore/`. Weitere Präfixe gibt es nicht.  
+
+### PRs
+
+`type(scope): describe the changes so others and future you understand what you did here`
+
+Format: wie bei Commits
+
+#### Inhalt des Titels
+Beim Squash-Merge wird der PR Titel zur einzigen Commit Message.
+- Bei PRs mit nur einem Commit sind diese identisch.
+- Bei mehreren Commits beschreibt der PR Titel das Gesamtziel des PRs/Tickets. Der Typ ist der wichtigste Typ unter den Commits. feat und fix schlagen alles andere, docs, test, chore und build gelten nur, wenn sie allein stehen.
+
+PR Nummer nicht in den Titel hinzufügen, wird beim mergen automatisch von GitHub angehängt.
+Ticket Nummer nicht in den Titel hinzufügen, sondern per Closes (siehe unten), wird dann durch GitHub verknüpft.
+
+#### Ticket
+Closes #nr, wenn der PR das Ticket fertigstellt und schließen soll.
+Refs #nr, wenn der PR zum Ticket beiträgt, es aber nicht fertigstellt.
