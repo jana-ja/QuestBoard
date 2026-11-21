@@ -135,8 +135,6 @@ Ein Ticket ist fertig, wenn:
 
 `type(scope): describe the changes so others and future you understand what you did here`
 
-Scopes: backend, frontend, infra, ci, docs
-
 Typen:
 | Type | Beispiel |
 |---|---|
@@ -151,9 +149,24 @@ Typen:
 | style | `style(backend): apply ruff format` |
 | perf | `perf(backend): index quest instances by day` |
 
+Möglichst spezifisch sein: Ist es ein Fehler (`fix`), nur Doku (`docs`), nur Tests (`test`), CI (`ci`) oder eine Abhängigkeit (`build`)? Erst wenn nichts davon passt, `chore`.
+
+Scopes:
+| Scope | Beispiel |
+|---|---|
+| backend | `feat(backend): add health endpoint`|
+| frontend | `fix(backend): handle missing timezone` |
+| infra | `refactor(backend): extract quest service` |
+| ci | `test(backend): cover day rollover` |
+| docs | `docs: add ADR for database driver` |
+
+Kein Scope, wenn die Änderung übergreifend ist oder bereits durch den Typ abgedeckt.
+
 **Branches**
 
 `prefix/XX-short-name`
+
+`prefix/short-name` **nur**, ohne zugehöriges Ticket.
 
 Präfixe:
 | Präfix | Beispiel |
@@ -164,14 +177,20 @@ Präfixe:
 | docs | `docs/7-adr-api-versioning`|
 | chore | `chore/5-break-ci-and-volumes` |
 
+Präfix Wahl: Fehler vor Bereich, Bereich vor Art (fix > infra > feat > docs > chore)
 Keine Klammern, keine Leerzeichen, kein Scope
 
 **PRs**
 
 `type(scope): describe the changes so others and future you understand what you did here`
 
-Naming Convention wie bei Commits. 
+Naming Convention wie bei Commits.
+Beim Squash-Merge wird der PR Titel zur einzigen Commit Message.
+Ticket Nummer nicht in den Titel hinzufügen, sondern per Closes (siehe unten), da GitHub sie dann beim mergen selber anhängt und das Ticket verknüpft.
 
 Bei PRs mit nur einem Commit sind diese identisch.
 
 Bei mehreren Commits beschreibt der PR Titel das Gesamtziel des PRs/Tickets. Der zentrale type vom Zweck des PR wird verwendet.
+
+Closes #nr, wenn der PR das Ticket fertigstellt und schließen soll.
+Refs #nr, wenn der PR zum Ticket beiträgt, es aber nicht fertigstellt.
