@@ -135,18 +135,36 @@ Ein Ticket ist fertig, wenn:
 
 `type(scope): describe the changes so others and future you understand what you did here`
 
-Typen: feat, fix, refactor, test, docs, build, ci, chore, style, perf
-
 Scopes: backend, frontend, infra, ci, docs
 
+Typen:
+| Type | Beispiel |
+|---|---|
+| feat | `feat(backend): add health endpoint`|
+| fix | `fix(backend): handle missing timezone` |
+| refactor | `refactor(backend): extract quest service` |
+| test | `test(backend): cover day rollover` |
+| docs | `docs: add ADR for database driver` |
+| build | `build(backend): remove sqlalchemy and alembic` |
+| ci | `ci: run pyright in backend workflow` |
+| chore | `chore(backend): simplify ruff config` |
+| style | `style(backend): apply ruff format` |
+| perf | `perf(backend): index quest instances by day` |
 
 **Branches**
 
 `prefix/XX-short-name`
 
-Präfixe: feat, fix, infra, docs, chore
+Präfixe:
+| Präfix | Beispiel |
+|---|---|
+| feat | `feat/19-board-endpoint` |
+| fix | `fix/compose-healthcheck` |
+| infra | `infra/20-caddy-reverse-proxy` |
+| docs | `docs/7-adr-api-versioning`|
+| chore | `chore/5-break-ci-and-volumes` |
 
-Keine Klammern, keine Leerzeichen
+Keine Klammern, keine Leerzeichen, kein Scope
 
 **PRs**
 
